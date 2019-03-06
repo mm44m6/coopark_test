@@ -66,13 +66,6 @@
         }
     }
 
-    .form-date-container:disabled {
-        ion-label, ion-input {
-            opacity: 1;
-            color: #000;
-        }
-    }
-
     .form-register-btn {
         font-size: 16px;
         color: #fff;
@@ -83,7 +76,7 @@
     }
 
     .form-register-btn:disabled {
-        background-color: #f2709b21;
+        background-color: #e9c9d4 ;
     }
 
 }

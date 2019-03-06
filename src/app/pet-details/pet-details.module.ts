@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 import { PetDetailsPage } from './pet-details.page';
 
 const routes: Routes = [
@@ -20,6 +22,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    SocialSharing
   ],
   declarations: [PetDetailsPage]
 })

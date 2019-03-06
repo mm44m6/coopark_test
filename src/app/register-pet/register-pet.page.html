@@ -29,9 +29,9 @@
         </div>
       </ion-item>
 
-      <ion-item lines="none" (click)="takePhoto()">
+      <ion-item lines="none" (click)="showPhotoActionSheet()">
         <div class="form-img-container">
-          <img class="form-img-placeholder-dog" *ngIf="this.registerPetForm.value.species === 'dog' || !this.registerPetForm.value.species && !this.petImage" src="../../assets/dog.svg">
+          <img class="form-img-placeholder-dog" *ngIf="(this.registerPetForm.value.species === 'dog' || !this.registerPetForm.value.species) && !this.petImage" src="../../assets/dog.svg">
           <img class="form-img-placeholder-cat" *ngIf="this.registerPetForm.value.species === 'cat' && !this.petImage" src="../../assets/cat.svg">
           <img class="form-img" *ngIf="this.petImage" src="{{this.petImage}}">
         </div>
@@ -64,8 +64,8 @@
         <div class="form-radio-container">
           <span>Sexo </span>
           <fieldset>
-            <input type="radio" value="male" name="gender" formControlName="gender"> <span>Macho</span>
-            <input type="radio" value="female" name="gender" formControlName="gender"> <span>Femea</span>
+            <input type="radio" value="Macho" name="gender" formControlName="gender"> <span>Macho</span>
+            <input type="radio" value="Femea" name="gender" formControlName="gender"> <span>Femea</span>
           </fieldset>
         </div>
       </ion-item>

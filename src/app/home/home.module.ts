@@ -8,7 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 
 import { HomePage } from './home.page';
-import { CarouselComponent } from '../common/carousel/carousel.component';
 
 const routes: Routes = [
   {
@@ -26,8 +25,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    HomePage,
-    CarouselComponent
+    HomePage
   ]
 })
 export class HomePageModule {}

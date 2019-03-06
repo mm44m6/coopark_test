@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import { RegisterPetService } from './register-pet.service';
+import { ActionSheetController } from '@ionic/angular';
+
+import { PetsService } from '../common/pets.service';
 import { Pet } from '../common/pet';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -18,12 +21,10 @@ export class RegisterPetPage implements OnInit {
 
   registerPetForm: FormGroup;
   petImage: string;
-  cameraOptions: CameraOptions = {
-    destinationType: 0
-  };
 
-  constructor(public fb: FormBuilder, public registerPetService: RegisterPetService,
-              public camera: Camera, public filePath: FilePath, public webView: WebView, public datePicker: DatePicker) { }
+  constructor(private fb: FormBuilder, private petsService: PetsService, private router: Router,
+              private camera: Camera, private filePath: FilePath, private webView: WebView, private datePicker: DatePicker,
+              private actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
     this.createRegisterPetForm();
@@ -64,8 +65,37 @@ export class RegisterPetPage implements OnInit {
     return `${day}/${month}/${year}`;
   }
 
-  takePhoto() {
-    this.camera.getPicture(this.cameraOptions).then(res => {
+  async showPhotoActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Faça upload de uma imagem',
+      buttons: [{
+        text: 'Fototeca',
+        icon: 'image',
+        handler: () => {
+          this.savePhoto(2);
+        }
+      }, {
+        text: 'Camera',
+        icon: 'camera',
+        handler: () => {
+          this.savePhoto(1);
+        }
+      }, {
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {}
+      }]
+    });
+    await actionSheet.present();
+  }
+
+  savePhoto(sourceType) {
+    const cameraOptions: CameraOptions = {
+      destinationType: 0,
+      sourceType: sourceType
+    };
+
+    this.camera.getPicture(cameraOptions).then(res => {
       this.petImage = `data:image/jpeg;base64,${res}`;
     }).catch(err => console.log(err));
   }
@@ -83,8 +113,16 @@ export class RegisterPetPage implements OnInit {
   onSubmit() {
     const pet = this.registerPetForm.value;
     pet.petPhoto = this.petImage;
-    this.registerPetService.createDocument(pet as Pet);
-    console.log(pet);
+    this.petsService.registerPet(pet as Pet);
+    this.resetRegisterPetForm();
+  }
+
+  resetRegisterPetForm() {
+    this.registerPetForm.reset();
+    this.registerPetForm.controls['occurrenceDate'].setValue(this.formatDate(new Date()));
+    this.petImage = '';
+
+    this.router.navigate(['/home']);
   }
 
 }

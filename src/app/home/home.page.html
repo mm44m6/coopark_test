@@ -1,7 +1,34 @@
 <ion-header padding>
-    <a routerLink="/register-pet" routerLinkActive="active"><ion-icon name="add-circle-outline"></ion-icon></a>
+    <a routerLink="/register-pet" routerLinkActive="active"><ion-icon name="add"></ion-icon></a>
 </ion-header>
 <ion-content padding>
   <h1>Encontrados</h1>
-  <app-carousel></app-carousel>
+  <div *ngIf="this.foundPets" class="carousel-outer-container">
+    <swiper [config]="config">
+      <div class="carousel-slide-container" (click)="details(pet.id)" *ngFor="let pet of foundPets | async">
+        <div class="carousel-slide-img-container">
+          <img src="{{pet.petPhoto}}">
+        </div>
+        <div class="carousel-slide-text-container" padding>
+          <p><span>Encontrado em:</span> {{pet.occurrenceDate}} </p>
+          <p><span>Por:</span> {{pet.reporterName}}</p>
+        </div>
+      </div>
+    </swiper>
+  </div>
+  <h1>Perdidos</h1>
+  <div *ngIf="this.lostPets" class="carousel-outer-container">
+    <swiper [config]="config">
+      <div class="carousel-slide-container" (click)="details(pet.id)" *ngFor="let pet of lostPets | async">
+        <div class="carousel-slide-img-container">
+          <img src="{{pet.petPhoto}}">
+        </div>
+        <div class="carousel-slide-text-container" padding>
+          <p *ngIf="pet.petName"><span>Nome:</span> {{pet.petName}}</p>
+          <p><span>Visto última vez em:</span> {{pet.occurrenceDate}} </p>
+          <p><span>Por:</span> {{pet.reporterName}}</p>
+        </div>
+      </div>
+    </swiper>
+  </div>
 </ion-content>

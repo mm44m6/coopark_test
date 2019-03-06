@@ -1,6 +1,6 @@
 :host {
-    .gradient-background {
-        background: linear-gradient(to right, #f2709c, #ff9472);
+    .background {
+        background-color: #f2709c;
         position: absolute;
         height: 300px;
         width: 100%;
@@ -9,7 +9,7 @@
     }
 
     ion-header, ion-toolbar {
-        --background: linear-gradient(to right, #f2709c, #ff9472);
+        --background: #f2709c;
     }
 
     ion-card {
