@@ -1,0 +1,57 @@
+:host {
+    .gradient-background {
+        background: linear-gradient(to right, #f2709c, #ff9472);
+        position: absolute;
+        height: 300px;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    ion-header, ion-toolbar {
+        --background: linear-gradient(to right, #f2709c, #ff9472);
+    }
+
+    ion-card {
+        background-color: #fff;
+    }
+
+    ion-card-header {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .ion-card-container {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+    }
+
+    ion-card-content {
+        padding-top: 16px;
+        p {
+            span {
+                font-weight: bold;
+                color: #f2709c;
+            }
+        }
+    }
+
+    .edit-btn {
+        background-color: #f2709c;
+        position: absolute;
+        width: 50px;
+        right: 10px;
+        top: -15%;
+        padding: 10px;
+        border-radius: 100%;
+    }
+
+    .share-btn {
+        position: relative;
+        background-color: transparent;
+        width: 40px;
+        left: calc(100% - 70px);
+        top: 10px;
+    }
+}

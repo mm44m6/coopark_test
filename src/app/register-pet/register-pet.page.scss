@@ -1,0 +1,89 @@
+:host {
+    ion-list {
+        border: none;
+        ion-item {
+            border: none;
+            ion-icon {
+                font-size: 25px;
+                margin-bottom: 6px;
+            }
+        }
+    }
+
+    ion-label {
+        span {
+            color: #f2709c;
+        }
+    }
+
+    fieldset {
+        border: none;
+        display: inline;
+        span {
+            padding: 0px 10px 0px 5px;
+            font-weight: bold;
+            color: #f2709c;
+        }
+    }
+
+    .form-radio-header-container {
+        margin: 0 auto;
+        width: auto;
+    }
+
+    .form-radio-container {
+        @extend .form-radio-header-container;
+        margin: 20px 0px 10px 0px;
+    }
+
+    .form-img-container {
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        .form-img-placeholder-dog,
+        .form-img-placeholder-cat {
+            margin-top: 20px;
+            object-fit: cover;
+        }
+        .form-img {
+            object-fit: cover;
+        }
+    }
+
+    .form-img-camera-icon-container {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #f2709c;
+        right: 52vw;
+        top: 0px;
+        border-radius: 100%;
+        img {
+            padding: 5px;
+        }
+    }
+
+    .form-date-container:disabled {
+        ion-label, ion-input {
+            opacity: 1;
+            color: #000;
+        }
+    }
+
+    .form-register-btn {
+        font-size: 16px;
+        color: #fff;
+        padding: 5px 20px;
+        margin: 0 auto;
+        background-color:#f2709c;
+        border-radius: 20px;
+    }
+
+    .form-register-btn:disabled {
+        background-color: #f2709b21;
+    }
+
+}

@@ -1,0 +1,30 @@
+.carousel-outer-container {
+    height: 30%;
+}
+
+.carousel-slide-container {
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.carousel-slide-img-container {
+    height: 60%;
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.carousel-slide-text-container {
+    p {
+        padding: 0px;
+        margin: 0px;
+        font-size: 14px;
+        span {
+            font-weight: bold;
+            color: #f2709c;
+        }
+    }
+}

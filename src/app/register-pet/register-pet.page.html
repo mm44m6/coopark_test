@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Conte-nos o que houve</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="registerPetForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item lines="none">
+        <div class="form-radio-header-container">
+          <span>Eu</span>
+          <fieldset>
+            <input type="radio" value="found" name="occurrence" formControlName="occurrence"> <span>encontrei</span>
+            <input type="radio" value="lost" name="occurrence" formControlName="occurrence" > <span>perdi</span>
+          </fieldset>
+        </div>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="form-radio-header-container">
+          <span>um</span>
+          <fieldset>
+            <input type="radio" value="dog" name="species" formControlName="species"> <span>cachorro</span>
+            <input type="radio" value="cat" name="species" formControlName="species"> <span>gato</span>
+          </fieldset>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" (click)="takePhoto()">
+        <div class="form-img-container">
+          <img class="form-img-placeholder-dog" *ngIf="this.registerPetForm.value.species === 'dog' || !this.registerPetForm.value.species && !this.petImage" src="../../assets/dog.svg">
+          <img class="form-img-placeholder-cat" *ngIf="this.registerPetForm.value.species === 'cat' && !this.petImage" src="../../assets/cat.svg">
+          <img class="form-img" *ngIf="this.petImage" src="{{this.petImage}}">
+        </div>
+        <div class="form-img-camera-icon-container">
+          <img class="" src="../../assets/photo-camera.svg">
+        </div>
+      </ion-item>
+
+      <ion-item *ngIf="this.registerPetForm.value.occurrence === 'lost'">
+        <ion-label position="floating">Nome do pet</ion-label> 
+        <ion-input formControlName="petName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Seu nome<span> *</span></ion-label> 
+        <ion-input formControlName="reporterName"></ion-input>
+      </ion-item>
+
+      <ion-item (click)="showDatePicker()" class="form-date-container">
+        <ion-label position="floating">Data do ocorrido<span> *</span></ion-label> 
+        <ion-input formControlName="occurrenceDate" [disabled]='this.registerPetForm.value.occurrenceDate'><ion-icon name="calendar"></ion-icon></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Raça</ion-label>
+        <ion-input formControlName="breed"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <div class="form-radio-container">
+          <span>Sexo </span>
+          <fieldset>
+            <input type="radio" value="male" name="gender" formControlName="gender"> <span>Macho</span>
+            <input type="radio" value="female" name="gender" formControlName="gender"> <span>Femea</span>
+          </fieldset>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Temperamento: </ion-label>
+        <ion-textarea formControlName="temper" placeholder="Faça uma breve descrição da personalidade do animalzinho!"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Onde ocorreu <span>*</span></ion-label> 
+        <ion-input formControlName="occurrenceLocation"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <button type="submit" class="form-register-btn" [disabled]="this.registerPetForm.status === 'INVALID' || !this.petImage">Cadastrar</button>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>

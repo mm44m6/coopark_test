@@ -1,0 +1,15 @@
+:host {
+    ion-header {
+        background: linear-gradient(to right, #f2709c, #ff9472);
+        text-align: right;
+        height: 80px;
+        ion-icon {
+            color: #fff;
+            font-size: 50px;
+        }
+    }
+
+    ion-content {
+        background: #eeeeee;
+    }
+}
